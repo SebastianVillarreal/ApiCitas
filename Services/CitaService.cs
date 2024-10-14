@@ -147,5 +147,31 @@ namespace reportesApi.Services
             }
             return lista;
         }
+
+        public List<string> ObtenerFechasConCitasOcupadas()
+        {
+            ConexionDataAccess dac = new ConexionDataAccess(connection);
+            List<string> lista = new List<string>();
+
+
+            try
+            {
+                DataSet ds = dac.Fill("ObtenerFechasConCitasOcupadas");
+                
+                if(ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach(DataRow dr in ds.Tables[0].Rows)
+                    {
+                        lista.Add(dr["fecha"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
+            return lista;
+        }
     }
 }
