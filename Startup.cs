@@ -153,14 +153,14 @@ namespace reportesApi
             }
 
             // Sirve archivos estáticos
-            // app.UseStaticFiles();
+            app.UseStaticFiles();
 
-            // app.UseStaticFiles(new StaticFileOptions
-            // {
-            //     FileProvider = new PhysicalFileProvider(
-            //         Path.Combine(Directory.GetCurrentDirectory(), "uploads")),
-            //     RequestPath = "/uploads"
-            // });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "uploads")),
+                RequestPath = "/uploads"
+            });
 
             //  app.ConfigureExceptionHandler(logger);
             app.ConfigureCustomExceptionMiddleware();

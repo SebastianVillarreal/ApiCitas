@@ -128,25 +128,5 @@ namespace reportesApi.Controllers
 
             return new JsonResult(objectResponse);
         }
-
-        [HttpGet("ObtenerFechasConCitasOcupadas")]
-        public JsonResult ObtenerFechasConCitasOcupadas()
-        {
-            var objectResponse = Helper.GetStructResponse();
-            try
-            {
-                objectResponse.StatusCode = (int)HttpStatusCode.OK;
-                objectResponse.success = true;
-                objectResponse.message = "Fechas con citas ocupadas cargadas correctamente";
-            }
-            catch (Exception ex)
-            {
-                objectResponse.StatusCode = (int)HttpStatusCode.InternalServerError;
-                objectResponse.success = false;
-                objectResponse.message = ex.Message;            
-            }
-
-            return new JsonResult(objectResponse);
-        }
     }
 }
