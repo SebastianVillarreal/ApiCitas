@@ -150,6 +150,27 @@ namespace reportesApi.Controllers
             return new JsonResult(objectResponse);
         }
 
+        [HttpGet("ObtenerHorariosOcupadosPorFecha")]
+        public JsonResult ObtenerHorariosOcupadosPorFecha([FromQuery] string Fecha)
+        {
+            var objectResponse = Helper.GetStructResponse();
+            try
+            {
+                objectResponse.StatusCode = (int)HttpStatusCode.OK;
+                objectResponse.success = true;
+                objectResponse.message = "Horarios ocupados por fecha cargados correctamente";
+                objectResponse.response =_citaService.ObtenerHorariosOcupadosPorFecha(Fecha);
+            }
+            catch(Exception ex)
+            {
+                objectResponse.StatusCode = (int)HttpStatusCode.InternalServerError;
+                objectResponse.success = false;
+                objectResponse.message = ex.Message;
+            }
+
+            return new JsonResult(objectResponse);
+        }
+
 
         
 

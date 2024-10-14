@@ -173,5 +173,38 @@ namespace reportesApi.Services
             }
             return lista;
         }
+
+        public List<HorariosOcupadosModel> ObtenerHorariosOcupadosPorFecha(string Fecha)
+        {
+            ConexionDataAccess dac = new ConexionDataAccess(connection);
+            ArrayList parametros = new ArrayList();
+
+            List<HorariosOcupadosModel> lista = new List<HorariosOcupadosModel>();
+
+            parametros.Add(new SqlParameter {ParameterName = "fecha", SqlDbType = SqlDbType.Date, Value = Fecha});
+
+            try
+            {
+                DataSet ds = dac.Fill("ObtenerHorariosOcupadosPorFecha", parametros);
+                
+                if(ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach(DataRow dr in ds.Tables[0].Rows)
+                    {
+                        lista.Add(new HorariosOcupadosModel{
+                            HoraInicio = dr["hora_inicio"].ToString(),
+                            HoraFin = dr["hora_fin"].ToString(),
+                            Descripcion = dr["descripcion"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
+            return lista;
+        }
     }
 }
