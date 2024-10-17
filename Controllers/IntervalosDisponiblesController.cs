@@ -8,6 +8,8 @@ using reportesApi.Utilities;
 
 namespace reportesApi.Controllers
 {
+    [Route("api")]
+
     public class IntervalosDisponiblesController:ControllerBase
     {
         private IntervalosDisponiblesService _intervalosService;

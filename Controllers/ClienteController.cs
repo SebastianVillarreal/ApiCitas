@@ -9,6 +9,7 @@ using reportesApi.Utilities;
 
 namespace reportesApi.Controllers
 {
+    [Route("api")]
     public class ClienteController : ControllerBase
     {
         private ClienteService _clienteService;
