@@ -9,6 +9,7 @@ using reportesApi.Utilities;
 
 namespace reportesApi.Controllers
 {
+    [Route("api")]
     public class CitaController : ControllerBase
     {
         private CitaService _citaService;
