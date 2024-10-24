@@ -162,7 +162,7 @@ namespace reportesApi.Services
                 {
                     foreach(DataRow dr in ds.Tables[0].Rows)
                     {
-                        lista.Add(dr["fecha"].ToString());
+                        lista.Add(((DateTime)dr["fecha"]).ToString("MM/dd/yyyy"));
                     }
                 }
             }
@@ -174,13 +174,14 @@ namespace reportesApi.Services
             return lista;
         }
 
-        public List<HorariosOcupadosModel> ObtenerHorariosOcupadosPorFecha(string Fecha)
+        public List<HorariosOcupadosModel> ObtenerHorariosOcupadosPorFecha(DateTime Fecha)
         {
+
+
             ConexionDataAccess dac = new ConexionDataAccess(connection);
             ArrayList parametros = new ArrayList();
 
             List<HorariosOcupadosModel> lista = new List<HorariosOcupadosModel>();
-
             parametros.Add(new SqlParameter {ParameterName = "fecha", SqlDbType = SqlDbType.Date, Value = Fecha});
 
             try

@@ -152,7 +152,7 @@ namespace reportesApi.Controllers
         }
 
         [HttpGet("ObtenerHorariosOcupadosPorFecha")]
-        public JsonResult ObtenerHorariosOcupadosPorFecha([FromQuery] string Fecha)
+        public JsonResult ObtenerHorariosOcupadosPorFecha([FromQuery] DateTime Fecha)
         {
             var objectResponse = Helper.GetStructResponse();
             try
