@@ -193,6 +193,7 @@ namespace reportesApi.Services
                     foreach(DataRow dr in ds.Tables[0].Rows)
                     {
                         lista.Add(new HorariosOcupadosModel{
+                            IdCita = int.Parse(dr["id_cita"].ToString()),
                             HoraInicio = dr["hora_inicio"].ToString(),
                             HoraFin = dr["hora_fin"].ToString(),
                             Descripcion = dr["descripcion"].ToString()
